@@ -11,6 +11,7 @@ for dirname in dirlist:
 		if(filename.endswith('.wav')):
 			fs,d = w.read(os.path.join(dirname,filename))
 			d = np.array(d,dtype = float)
+			d /= 32,767
 			m = melspectrogram(d,fs,n_mels = 80,n_fft = 400,hop_length = 160,fmax = 8000)
 			fspec = io.open(dirname+'spec','w')
 			for row in m:
